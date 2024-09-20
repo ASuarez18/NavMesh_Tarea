@@ -19,7 +19,7 @@ public class EnemyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Patrullar(puntosPatrullaje);
     }
 
     // Update is called once per frame
@@ -53,7 +53,11 @@ public class EnemyController : MonoBehaviour
         if(other.tag == "Punto"){
             Patrullar(puntosPatrullaje);
         }
-        else if(other.tag == "Player"){
+    }
+
+    public void OnTriggerStay(Collider other)
+    {
+        if(other.tag == "Player"){
             Perseguir(other.transform);
         }
     }

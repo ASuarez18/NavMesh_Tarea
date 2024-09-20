@@ -1228,7 +1228,7 @@ GameObject:
   - component: {fileID: 41527630}
   m_Layer: 0
   m_Name: Patrol3
-  m_TagString: Untagged
+  m_TagString: Punto
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2341,7 +2341,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 1025971452}
+  m_Mesh: {fileID: 1653651842}
 --- !u!33 &193622480
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -2648,7 +2648,10 @@ GameObject:
   - component: {fileID: 262599602}
   - component: {fileID: 262599605}
   - component: {fileID: 262599604}
+  - component: {fileID: 262599608}
   - component: {fileID: 262599603}
+  - component: {fileID: 262599607}
+  - component: {fileID: 262599606}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -2664,11 +2667,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 262599601}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 3.53, y: 0.756, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 418521495}
   m_Father: {fileID: 1571194111}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &262599603
@@ -2744,6 +2748,73 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 262599601}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!195 &262599606
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 262599601}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 1
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &262599607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 262599601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d50766609317e4541bd174786a9bead2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  puntosPatrullaje:
+  - {fileID: 503544560}
+  - {fileID: 932708704}
+  - {fileID: 41527629}
+  - {fileID: 376707513}
+  agent: {fileID: 262599606}
+--- !u!54 &262599608
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 262599601}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!43 &278233474
 Mesh:
   m_ObjectHideFlags: 0
@@ -3840,7 +3911,7 @@ GameObject:
   - component: {fileID: 376707514}
   m_Layer: 0
   m_Name: Patrol4
-  m_TagString: Untagged
+  m_TagString: Punto
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4179,6 +4250,59 @@ Transform:
   - {fileID: 298307000}
   m_Father: {fileID: 868382757}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &418521494
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 418521495}
+  - component: {fileID: 418521496}
+  m_Layer: 0
+  m_Name: Sight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &418521495
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 418521494}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 262599602}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &418521496
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 418521494}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 3.896566
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &425135812
 GameObject:
   m_ObjectHideFlags: 0
@@ -4236,7 +4360,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 36083631}
+  m_Mesh: {fileID: 798411297}
 --- !u!33 &425135815
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -4620,7 +4744,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 705330022}
+  m_Mesh: {fileID: 1025971452}
 --- !u!33 &456667136
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -4973,7 +5097,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 705330022}
+  m_Mesh: {fileID: 36083631}
 --- !u!33 &469275147
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -5448,7 +5572,7 @@ GameObject:
   - component: {fileID: 503544561}
   m_Layer: 0
   m_Name: Patrol1
-  m_TagString: Untagged
+  m_TagString: Punto
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8751,7 +8875,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 1008119080}
+  m_Mesh: {fileID: 1698358454}
 --- !u!33 &915496547
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -9061,7 +9185,7 @@ GameObject:
   - component: {fileID: 932708705}
   m_Layer: 0
   m_Name: Patrol2
-  m_TagString: Untagged
+  m_TagString: Punto
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9704,7 +9828,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 703751877}
+  m_Mesh: {fileID: 705330022}
 --- !u!33 &1139028305
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -12186,7 +12310,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 1038914359}
+  m_Mesh: {fileID: 278233474}
 --- !u!33 &1565194485
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -12572,7 +12696,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 798411297}
+  m_Mesh: {fileID: 1720379704}
 --- !u!33 &1622112436
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -13750,7 +13874,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 278233474}
+  m_Mesh: {fileID: 356795773}
 --- !u!33 &1735456461
 MeshFilter:
   m_ObjectHideFlags: 10
