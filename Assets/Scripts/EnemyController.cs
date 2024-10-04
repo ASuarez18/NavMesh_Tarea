@@ -15,6 +15,9 @@ public class EnemyController : MonoBehaviour
     // Enemigo
     public NavMeshAgent agent;
 
+    //Script de red bayensiana
+    [SerializeField] BayesianManagerWeather weatherManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -85,6 +88,8 @@ public class EnemyController : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            weatherManager._enemyAttacking = false;
+            weatherManager.BayesianWeather();
             ReiniciarBusqueda(other.gameObject); // Pasar el GameObject del jugador
         }
     }
@@ -94,6 +99,8 @@ public class EnemyController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            weatherManager._enemyAttacking = true;
+            weatherManager.BayesianWeather();
             PlayerController playerController = other.gameObject.GetComponent<PlayerController>();
             playerController.vida -= 1;
 
@@ -103,5 +110,6 @@ public class EnemyController : MonoBehaviour
                 ReiniciarBusqueda(other.gameObject); // Pasar el GameObject del jugador
             }
         }
+       
     }
 }
