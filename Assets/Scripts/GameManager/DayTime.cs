@@ -8,7 +8,7 @@ public class DayTime : MonoBehaviour
     public Light sceneLight;
 
     //Contador de la luna de sangre
-    public float moonSangreDuration = 300f;
+    public float moonSangreDuration = 10f;
 
     //Obtenemos la duracion del dia en segundos
     public float dayDuration = 300f;
@@ -39,7 +39,7 @@ public class DayTime : MonoBehaviour
             //Cambio de estado
             sceneLight.color = Color.white;
             //Reseteamos el contador
-            moonSangreDuration = 300f;
+            moonSangreDuration = 10f;
         }
         
     }

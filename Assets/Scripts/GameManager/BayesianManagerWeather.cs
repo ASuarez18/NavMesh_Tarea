@@ -5,35 +5,65 @@ public class BayesianManagerWeather : MonoBehaviour
 {
     //Primero debemos de obtener nuestros tres entradas o nodos que modificaran el clima
     public float _sceneLight;
-    [SerializeField] private GameObject _playerInventory;
     public bool _enemyAttacking;
 
     //Variables de probabilidad
-    bool x1,x2,x3;
+    private bool x1,x2,x3;
 
     //Manager de estados
-    string _switch;
+    private string _switch;
 
     //Luego creamos una lista para almacenar los valores de los nodos anteriores
-    List<float> probabilidades;
+    private List<float> probabilidades;
 
     //Lista de estados activos
-    public List<string> estados;
+    private List<string> estados;
+
+    //banderas
+    private bool neblina, lluvia;
+
+    //Duracion de la neblina y lluvia
+    private float neblinaDuration , lluviaDuration;
 
     //Variables de entorno
     [SerializeField] public Light _sceneLightColor;
     [SerializeField] public ParticleSystem _rain;
+    [SerializeField] public GameObject _playerInventory;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        estados = new List<string>();
+        //Inicializa las variables y contadores
+        neblinaDuration = 10f;
+        lluviaDuration = 10f;
+        neblina = false;
+        lluvia = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if(neblina)
+        {
+            neblinaDuration -= Time.deltaTime;
+        }
+        if(lluvia)
+        {
+            lluviaDuration -= Time.deltaTime;
+        }
+        if(neblinaDuration <= 0f)
+        {
+            neblina = false;
+            neblinaDuration = 10f;
+            RenderSettings.fog = false;
+        }
+        if(lluviaDuration <= 0f)
+        {
+            lluvia = false;
+            lluviaDuration = 10f;
+            _rain.Stop();
+        }
     }
 
     //Creamos una funcion que reciba un umbral
@@ -66,6 +96,7 @@ public class BayesianManagerWeather : MonoBehaviour
         {
             x1 = Acceptance(0.2f);
         }
+        Debug.Log(x1);
     }
 
     //Aqui creamos las tablas de verdad para cada uno de los nodos
@@ -88,6 +119,7 @@ public class BayesianManagerWeather : MonoBehaviour
         {
             x2 = Acceptance(0.8f);
         }
+        Debug.Log(x2);
     }
 
     public void Item()
@@ -108,6 +140,7 @@ public class BayesianManagerWeather : MonoBehaviour
         {
             x3 = Acceptance(0.1f);
         }
+        Debug.Log(x3);
     }
 
     // Calculo de estados
@@ -197,7 +230,11 @@ public class BayesianManagerWeather : MonoBehaviour
     }
 
     public void SelectorEstado(){
-        _switch = estados[Random.Range(0,estados.Count)];
+        if(estados.Count != 0)
+        {
+            _switch = estados[Random.Range(0,estados.Count)];
+        }
+       
         switch(_switch)
         {
             case "LunaSangre":
@@ -208,9 +245,14 @@ public class BayesianManagerWeather : MonoBehaviour
                 RenderSettings.fogColor = Color.gray;
                 RenderSettings.fogMode = FogMode.Exponential;
                 RenderSettings.fogDensity = .15f;
+                neblina = true;
                 break;
             case "Lluvia":
                 _rain.Play();
+                lluvia = true;
+                break;
+            default:
+                Debug.Log("No hay ningun estado");
                 break;
         }
     }
