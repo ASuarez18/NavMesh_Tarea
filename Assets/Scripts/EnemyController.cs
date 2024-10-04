@@ -10,6 +10,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] List<Transform> puntosPatrullaje;
     private int currentPatrolPoint;
     Transform puntoFinal;
+    private bool ataque = false;
 
     // Enemigo
     public NavMeshAgent agent;
